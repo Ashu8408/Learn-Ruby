@@ -1,0 +1,289 @@
+
+D:\Projects\Ruby\RubyProject1>rails s
+=> Booting Puma
+=> Rails 7.2.0 application starting in development
+=> Run `bin/rails server --help` for more startup options
+*** SIGUSR2 not implemented, signal based restart unavailable!
+*** SIGUSR1 not implemented, signal based restart unavailable!
+*** SIGHUP not implemented, signal based logs reopening unavailable!
+Puma starting in single mode...
+* Puma version: 6.4.2 (ruby 3.3.4-p94) ("The Eagle of Durango")
+*  Min threads: 3
+*  Max threads: 3
+*  Environment: development
+*          PID: 10456
+* Listening on http://[::1]:3000
+* Listening on http://127.0.0.1:3000
+Use Ctrl-C to stop
+Started GET "/" for ::1 at 2024-08-13 14:19:51 +0530
+  ActiveRecord::SchemaMigration Load (0.1ms)  SELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC
+Processing by RootController#index as HTML
+--------------------------------------------------------
+index section in server
+  Rendering layout layouts/application.html.erb
+  Rendering root/index.html.erb within layouts/application
+  Rendered root/_header.html (Duration: 0.2ms | GC: 0.0ms)
+  Rendered root/_footer.html (Duration: 0.2ms | GC: 0.0ms)
+  Rendered root/index.html.erb within layouts/application (Duration: 2.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 76.5ms | GC: 0.0ms)
+Completed 200 OK in 121ms (Views: 84.7ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/manifest.json" for ::1 at 2024-08-13 14:19:51 +0530
+
+ActionController::RoutingError (No route matches [GET] "/manifest.json"):
+
+Started GET "/" for ::1 at 2024-08-13 14:20:02 +0530
+Processing by RootController#index as HTML
+--------------------------------------------------------
+index section in server
+  Rendering layout layouts/application.html.erb
+  Rendering root/index.html.erb within layouts/application
+  Rendered root/_header.html (Duration: 0.0ms | GC: 0.0ms)
+  Rendered root/_footer.html (Duration: 0.0ms | GC: 0.0ms)
+  Rendered root/index.html.erb within layouts/application (Duration: 0.9ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.7ms | GC: 0.0ms)
+Completed 200 OK in 8ms (Views: 5.3ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/manifest.json" for ::1 at 2024-08-13 14:20:02 +0530
+
+ActionController::RoutingError (No route matches [GET] "/manifest.json"):
+
+- Gracefully stopping, waiting for requests to finish
+=== puma shutdown: 2024-08-13 16:32:06 +0530 ===
+- Goodbye!
+Exiting
+Terminate batch job (Y/N)? y
+
+D:\Projects\Ruby\RubyProject1>rails generate model Post title:string description:text
+      invoke  active_record
+The name 'Post' is either already used in your application or reserved by Ruby on Rails. Please choose an alternative or use --skip-collision-check or --force to skip this check and run this generator again.
+
+D:\Projects\Ruby\RubyProject1>rails db:migrate
+
+D:\Projects\Ruby\RubyProject1>rails console
+Loading development environment (Rails 7.2.0)
+ruby-project1(dev)> Post.connection
+=> #<ActiveRecord::ConnectionAdapters::SQLite3Adapter:0x0000000000c7b0 env_name="development" role=:writing>
+ruby-project1(dev)> Post
+=> Post (call 'Post.lease_connection' to establish a connection)
+ruby-project1(dev)> Post.lease_connection
+=> #<ActiveRecord::ConnectionAdapters::SQLite3Adapter:0x0000000000c7b0 env_name="development" role=:writing>
+ruby-project1(dev)> Post.connected?
+=> false
+ruby-project1(dev)> Post.lease_connection?
+C:/Users/AJ_ACER/.local/share/gem/ruby/3.3.0/gems/irb-1.14.0/lib/irb.rb:1285:in `full_message': undefined method `lease_connection?' for class Post (NoMethodError)
+Did you mean?  lease_connection
+               release_connection
+ruby-project1(dev)> Post.release_connection?
+C:/Users/AJ_ACER/.local/share/gem/ruby/3.3.0/gems/irb-1.14.0/lib/irb.rb:1285:in `full_message': undefined method `release_connection?' for class Post (NoMethodError)
+Did you mean?  release_connection
+               remove_connection
+               lease_connection
+ruby-project1(dev)> Post.release_connection
+=> true
+ruby-project1(dev)> Post.connected?
+=> false
+ruby-project1(dev)> Post.connection
+=> #<ActiveRecord::ConnectionAdapters::SQLite3Adapter:0x0000000000c7b0 env_name="development" role=:writing>
+ruby-project1(dev)> Post.connected?
+=> false
+ruby-project1(dev)> Post.checkout_timeout
+C:/Users/AJ_ACER/.local/share/gem/ruby/3.3.0/gems/irb-1.14.0/lib/irb.rb:1285:in `full_message': undefined method `checkout_timeout' for class Post (NoMethodError)
+ruby-project1(dev)> Post.acts_like?
+C:/Users/AJ_ACER/.local/share/gem/ruby/3.3.0/gems/irb-1.14.0/lib/irb.rb:1285:in `full_message': wrong number of arguments (given 0, expected 1) (ArgumentError)
+ruby-project1(dev)> remove_Post
+C:/Users/AJ_ACER/.local/share/gem/ruby/3.3.0/gems/irb-1.14.0/lib/irb.rb:1285:in `full_message': undefined local variable or method `remove_Post' for main (NameError)
+
+remove_Post
+^^^^^^^^^^^
+ruby-project1(dev)> Post.remove_method
+=> Post (call 'Post.lease_connection' to establish a connection)
+ruby-project1(dev)> Post.connect
+C:/Users/AJ_ACER/.local/share/gem/ruby/3.3.0/gems/irb-1.14.0/lib/irb.rb:1285:in `full_message': undefined method `connect' for class Post (NoMethodError)
+Did you mean?  connection
+ruby-project1(dev)> Post.connection_pool
+=> #<ActiveRecord::ConnectionAdapters::ConnectionPool env_name="development" role=:writing>
+ruby-project1(dev)> Post.connection
+=> #<ActiveRecord::ConnectionAdapters::SQLite3Adapter:0x0000000000c7b0 env_name="development" role=:writing>
+ruby-project1(dev)> exit
+
+D:\Projects\Ruby\RubyProject1>rails generate model Poost title:string description:text
+      invoke  active_record
+      create    db/migrate/20240813111201_create_poosts.rb
+      create    app/models/poost.rb
+      invoke    test_unit
+      create      test/models/poost_test.rb
+      create      test/fixtures/poosts.yml
+
+D:\Projects\Ruby\RubyProject1>rails db:migrate
+== 20240813111201 CreatePoosts: migrating =====================================
+-- create_table(:poosts)
+   -> 0.0118s
+== 20240813111201 CreatePoosts: migrated (0.0133s) ============================
+
+
+D:\Projects\Ruby\RubyProject1>rails console
+Loading development environment (Rails 7.2.0)
+ruby-project1(dev)> Poost.connected?
+=> false
+ruby-project1(dev)> Poost.connection
+=> #<ActiveRecord::ConnectionAdapters::SQLite3Adapter:0x000000000135d8 env_name="development" role=:writing>
+ruby-project1(dev)> Poost.lease_connection
+=> #<ActiveRecord::ConnectionAdapters::SQLite3Adapter:0x000000000135d8 env_name="development" role=:writing>
+ruby-project1(dev)> pp = Poost
+=> Poost (call 'Poost.lease_connection' to establish a connection)
+ruby-project1(dev)> a = Post.new
+=> #<Post:0x0000026bace3bc90 id: nil, title: nil, description: nil, created_at: nil, updated_at: nil>
+ruby-project1(dev)> Post
+=> Post(id: integer, title: string, description: text, created_at: datetime, updated_at: datetime)
+ruby-project1(dev)> Post.connected?
+=> true
+ruby-project1(dev)> Poost.connected?
+=> true
+ruby-project1(dev)> Post
+=> Post(id: integer, title: string, description: text, created_at: datetime, updated_at: datetime)
+ruby-project1(dev)> a
+=> #<Post:0x0000026bace3bc90 id: nil, title: nil, description: nil, created_at: nil, updated_at: nil>
+ruby-project1(dev)> a.title
+=> nil
+ruby-project1(dev)> a.title = "hello"
+=> "hello"
+ruby-project1(dev)> a.description = "Worldf"
+=> "Worldf"
+ruby-project1(dev)> a.description = "World"
+=> "World"
+ruby-project1(dev)> a.description
+=> "World"
+ruby-project1(dev)> a.save
+  TRANSACTION (0.1ms)  begin transaction
+  Post Create (1.4ms)  INSERT INTO "posts" ("title", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"  [["title", "hello"], ["description", "World"], ["created_at", "2024-08-13 11:16:01.246256"], ["updated_at", "2024-08-13 11:16:01.246256"]]
+  TRANSACTION (6.9ms)  commit transaction
+=> true
+ruby-project1(dev)> a
+=>
+#<Post:0x0000026bace3bc90
+ id: 1,
+ title: "hello",
+ description: "World",
+ created_at: "2024-08-13 11:16:01.246256000 +0000",
+ updated_at: "2024-08-13 11:16:01.246256000 +0000">
+ruby-project1(dev)> Post
+=> Post(id: integer, title: string, description: text, created_at: datetime, updated_at: datetime)
+ruby-project1(dev)> b = Post.new
+=> #<Post:0x0000026bad38d720 id: nil, title: nil, description: nil, created_at: nil, updated_at: nil>
+ruby-project1(dev)> b
+=> #<Post:0x0000026bad38d720 id: nil, title: nil, description: nil, created_at: nil, updated_at: nil>
+ruby-project1(dev)> b.title = "Ruby"
+=> "Ruby"
+ruby-project1(dev)> b.description = "-on-Rails"
+=> "-on-Rails"
+ruby-project1(dev)> b.save
+  TRANSACTION (0.1ms)  begin transaction
+  Post Create (0.9ms)  INSERT INTO "posts" ("title", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"  [["title", "Ruby"], ["description", "-on-Rails"], ["created_at", "2024-08-13 11:17:24.078893"], ["updated_at", "2024-08-13 11:17:24.078893"]]
+  TRANSACTION (0.2ms)  commit transaction
+=> true
+ruby-project1(dev)> Post
+=> Post(id: integer, title: string, description: text, created_at: datetime, updated_at: datetime)
+ruby-project1(dev)> Post.all
+  Post Load (0.2ms)  SELECT "posts".* FROM "posts" /* loading for pp */ LIMIT ?  [["LIMIT", 11]]
+=>
+[#<Post:0x0000026bad44c800 id: 1, title: "hello", description: "World", created_at: "2024-08-13 11:16:01.246256000 +0000", updated_at: "2024-08-13 11:16:01.246256000 +0000">,
+ #<Post:0x0000026bad44c6c0 id: 2, title: "Ruby", description: "-on-Rails", created_at: "2024-08-13 11:17:24.078893000 +0000", updated_at: "2024-08-13 11:17:24.078893000 +0000">]
+ruby-project1(dev)> b.description = "Rails"
+=> "Rails"
+ruby-project1(dev)> b.save
+  TRANSACTION (0.1ms)  begin transaction
+  Post Update (0.7ms)  UPDATE "posts" SET "description" = ?, "updated_at" = ? WHERE "posts"."id" = ?  [["description", "Rails"], ["updated_at", "2024-08-13 11:20:11.018241"], ["id", 2]]
+  TRANSACTION (0.1ms)  commit transaction
+=> true
+ruby-project1(dev)> Post.all
+  Post Load (0.1ms)  SELECT "posts".* FROM "posts" /* loading for pp */ LIMIT ?  [["LIMIT", 11]]
+=>
+[#<Post:0x0000026bad44cbc0 id: 1, title: "hello", description: "World", created_at: "2024-08-13 11:16:01.246256000 +0000", updated_at: "2024-08-13 11:16:01.246256000 +0000">,
+ #<Post:0x0000026bad44ca80 id: 2, title: "Ruby", description: "Rails", created_at: "2024-08-13 11:17:24.078893000 +0000", updated_at: "2024-08-13 11:20:11.018241000 +0000">]
+ruby-project1(dev)> c = Post.new
+=> #<Post:0x0000026bad44a3c0 id: nil, title: nil, description: nil, created_at: nil, updated_at: nil>
+ruby-project1(dev)> c.title ="3rd Entry"
+=> "3rd Entry"
+ruby-project1(dev)> c.description = "random description about 3rd entry in DB"
+=> "random description about 3rd entry in DB"
+ruby-project1(dev)> c.save
+  TRANSACTION (0.0ms)  begin transaction
+  Post Create (0.4ms)  INSERT INTO "posts" ("title", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"  [["title", "3rd Entry"], ["description", "random description about 3rd entry in DB"], ["created_at", "2024-08-13 11:21:16.754039"], ["updated_at", "2024-08-13 11:21:16.754039"]]
+  TRANSACTION (0.0ms)  commit transaction
+=> true
+ruby-project1(dev)> Post.all
+  Post Load (0.1ms)  SELECT "posts".* FROM "posts" /* loading for pp */ LIMIT ?  [["LIMIT", 11]]
+=>
+[#<Post:0x0000026bad44d480 id: 1, title: "hello", description: "World", created_at: "2024-08-13 11:16:01.246256000 +0000", updated_at: "2024-08-13 11:16:01.246256000 +0000">,
+ #<Post:0x0000026bad44d340 id: 2, title: "Ruby", description: "Rails", created_at: "2024-08-13 11:17:24.078893000 +0000", updated_at: "2024-08-13 11:20:11.018241000 +0000">,
+ #<Post:0x0000026bad44d200
+  id: 3,
+  title: "3rd Entry",
+  description: "random description about 3rd entry in DB",
+  created_at: "2024-08-13 11:21:16.754039000 +0000",
+  updated_at: "2024-08-13 11:21:16.754039000 +0000">]
+ruby-project1(dev)> Post.find(2)
+  Post Load (0.1ms)  SELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?  [["id", 2], ["LIMIT", 1]]
+=> #<Post:0x0000026bad44f8c0 id: 2, title: "Ruby", description: "Rails", created_at: "2024-08-13 11:17:24.078893000 +0000", updated_at: "2024-08-13 11:20:11.018241000 +0000">
+ruby-project1(dev)> Post.where(:id =>3)
+  Post Load (0.1ms)  SELECT "posts".* FROM "posts" WHERE "posts"."id" = ? /* loading for pp */ LIMIT ?  [["id", 3], ["LIMIT", 11]]
+=>
+[#<Post:0x0000026bad448340
+  id: 3,
+  title: "3rd Entry",
+  description: "random description about 3rd entry in DB",
+  created_at: "2024-08-13 11:21:16.754039000 +0000",
+  updated_at: "2024-08-13 11:21:16.754039000 +0000">]
+ruby-project1(dev)> Post.where(:id =>1,2)
+C:/Users/AJ_ACER/.local/share/gem/ruby/3.3.0/gems/irb-1.14.0/lib/irb.rb:1285:in `full_message': (ruby-project1):36: syntax error, unexpected ')', expecting => (SyntaxError)
+Post.where(:id =>1,2)
+                    ^
+
+ruby-project1(dev)> Post.where(:id =>1&2)
+  Post Load (0.1ms)  SELECT "posts".* FROM "posts" WHERE "posts"."id" = ? /* loading for pp */ LIMIT ?  [["id", 0], ["LIMIT", 11]]
+=> []
+ruby-project1(dev)> Post.where(:id =>1)
+  Post Load (0.1ms)  SELECT "posts".* FROM "posts" WHERE "posts"."id" = ? /* loading for pp */ LIMIT ?  [["id", 1], ["LIMIT", 11]]
+=> [#<Post:0x0000026bad38e3a0 id: 1, title: "hello", description: "World", created_at: "2024-08-13 11:16:01.246256000 +0000", updated_at: "2024-08-13 11:16:01.246256000 +0000">]
+ruby-project1(dev)> b = Post.find(2)
+  Post Load (0.1ms)  SELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?  [["id", 2], ["LIMIT", 1]]
+=> #<Post:0x0000026bad446180 id: 2, title: "Ruby", description: "Rails", created_at: "2024-08-13 11:17:24.078893000 +0000", updated_at: "2024-08-13 11:20:11.018241000 +0000">
+ruby-project1(dev)> b
+=> #<Post:0x0000026bad446180 id: 2, title: "Ruby", description: "Rails", created_at: "2024-08-13 11:17:24.078893000 +0000", updated_at: "2024-08-13 11:20:11.018241000 +0000">
+ruby-project1(dev)> b.title = "Ruby new"
+=> "Ruby new"
+ruby-project1(dev)> b.description = "Rails new"
+=> "Rails new"
+ruby-project1(dev)> b.save
+  TRANSACTION (0.0ms)  begin transaction
+  Post Update (0.3ms)  UPDATE "posts" SET "title" = ?, "description" = ?, "updated_at" = ? WHERE "posts"."id" = ?  [["title", "Ruby new"], ["description", "Rails new"], ["updated_at", "2024-08-13 11:24:45.833929"], ["id", 2]]
+  TRANSACTION (0.1ms)  commit transaction
+=> true
+ruby-project1(dev)> Post.all
+  Post Load (0.1ms)  SELECT "posts".* FROM "posts" /* loading for pp */ LIMIT ?  [["LIMIT", 11]]
+=>
+[#<Post:0x0000026bad44f280 id: 1, title: "hello", description: "World", created_at: "2024-08-13 11:16:01.246256000 +0000", updated_at: "2024-08-13 11:16:01.246256000 +0000">,
+ #<Post:0x0000026bad44f140 id: 2, title: "Ruby new", description: "Rails new", created_at: "2024-08-13 11:17:24.078893000 +0000", updated_at: "2024-08-13 11:24:45.833929000 +0000">,
+ #<Post:0x0000026bad44f000
+  id: 3,
+  title: "3rd Entry",
+  description: "random description about 3rd entry in DB",
+  created_at: "2024-08-13 11:21:16.754039000 +0000",
+  updated_at: "2024-08-13 11:21:16.754039000 +0000">]
+ruby-project1(dev)> c.description = "random description about 3rd entry"
+=> "random description about 3rd entry"
+ruby-project1(dev)> c.save
+  TRANSACTION (0.0ms)  begin transaction
+  Post Update (0.3ms)  UPDATE "posts" SET "description" = ?, "updated_at" = ? WHERE "posts"."id" = ?  [["description", "random description about 3rd entry"], ["updated_at", "2024-08-13 11:25:49.147902"], ["id", 3]]
+  TRANSACTION (0.0ms)  commit transaction
+=> true
+ruby-project1(dev)> Post.all
+  Post Load (0.1ms)  SELECT "posts".* FROM "posts" /* loading for pp */ LIMIT ?  [["LIMIT", 11]]
+=>
+[#<Post:0x0000026bad44d340 id: 1, title: "hello", description: "World", created_at: "2024-08-13 11:16:01.246256000 +0000", updated_at: "2024-08-13 11:16:01.246256000 +0000">,
+ #<Post:0x0000026bad44d200 id: 2, title: "Ruby new", description: "Rails new", created_at: "2024-08-13 11:17:24.078893000 +0000", updated_at: "2024-08-13 11:24:45.833929000 +0000">,
+ #<Post:0x0000026bad44d0c0 id: 3, title: "3rd Entry", description: "random description about 3rd entry", created_at: "2024-08-13 11:21:16.754039000 +0000", updated_at: "2024-08-13 11:25:49.147902000 +0000">]
+ruby-project1(dev)>
